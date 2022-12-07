@@ -131,7 +131,8 @@
         <h1>Ốp pềnh mun ti bồ URL nhà làm</h1>
     </div>
     <textarea name="link" id="link" cols="30" rows="10" placeholder="Bỏ link vào đây"></textarea>
-    <button class="button">Open URL</button>
+    <button id="openURL" class="button">Open URL</button>
+    <button id="openEditAnnoFab" class="button">Open URL</button>
 
     <script>
 
@@ -139,17 +140,31 @@
 
             return str;
         }
-        $("button").click(function () {
+        $("#openURL").click(function () {
             var link = $("#link").val().split(/\r?\n/)
                 .filter(line => line.trim() !== "")
                 .join("\n");
             var array = link.split("\n");
-            for (let i = 0; i <= array.length; i++) {
+            for (let i = 0; i <= array.length-1; i++) {
                 window.open(array[i]);
             }
             console.log(array)
             console.log(typeof (link))
         });
+
+        $("#openEditAnnoFab").click(function (){
+            var link = $("#link").val().split(/\r?\n/)
+                .filter(line => line.trim() !== "")
+                .join("\n");
+            var array = link.split("\n");
+            for (let i = 0; i <= array.length-1; i++) {
+                let linkEdit = array[i].replace('histories','editor?version=stable')
+                console.log(linkEdit);
+                window.open(linkEdit);
+            }
+            console.log(array)
+            console.log(typeof (link))
+        })
     </script>
 </body>
 
